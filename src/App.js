@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { RadarChart } from './RadarChart';
+import { ScoreComponent } from './ScoreComponent';
+import { ProjectStateComponent } from './ProjectStateComponent';
+import './App.scss';
 
-function App() {
+const App = () => {
+
+  const [score, setScore] = useState(0);
+  const [category, setCategory] = useState('');
+  const [triggerRadarChart, setTriggerRadarChart] = useState(false);
+  const [triggerScore, setTriggerScore] = useState(false);
+
+  const updateScore = (value) => {
+    setScore(value);
+  }
+
+  const updateCategory = (value) => {
+    setCategory(value);
+  }
+
+  const handleTriggerRadarChart = (value) => {
+    setTriggerRadarChart(value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div className='radar-chart-wrapper'>
+        <ProjectStateComponent 
+          width={212} 
+          height={212} 
+          projectState='stable'
+          triggerRadarChart={triggerRadarChart}
+          handleTriggerRadarChart={handleTriggerRadarChart}
+        />
+        {triggerScore &&
+          <ScoreComponent 
+            category={category} 
+            score={score} 
+            width={96} 
+            height={96}
+          />
+        }
+        <RadarChart 
+          chartID='radar-chart' 
+          triggerRadarChart={triggerRadarChart}
+          updateScore={updateScore}
+          updateCategory={updateCategory}
+          setTriggerScore={setTriggerScore}
+          handleTriggerRadarChart={handleTriggerRadarChart}
+        />
+      </div>
     </div>
   );
 }
-
 export default App;
