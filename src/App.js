@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { RadarChart } from './RadarChart';
 import { ScoreComponent } from './ScoreComponent';
 import { ProjectStateComponent } from './ProjectStateComponent';
+import { BarChart } from './BarChart';
 import './App.scss';
 
 const App = () => {
@@ -49,6 +50,9 @@ const App = () => {
           setTriggerScore={setTriggerScore}
           handleTriggerRadarChart={handleTriggerRadarChart}
         />
+      </div>
+      <div className='bar-chart-wrapper'>
+        <BarChart chartID='bar-chart' />
       </div>
     </div>
   );

@@ -4,12 +4,10 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5radar from '@amcharts/amcharts5/radar';
 import * as am5xy from '@amcharts/amcharts5/xy';
 
-const data = [{
+const data = [
+    {
     "category": "Schedule",
-    "score": 5.5,
-    'strokeSettings': {
-        'stroke': am5.color('#FF7875')
-    }
+    "score": 5.5
 }, {
     "category": "Budget",
     "score": 6.8
